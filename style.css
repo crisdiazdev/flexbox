@@ -3,83 +3,190 @@ https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 html {
   box-sizing: border-box;
 }
-/* inherit border-box on all elements in the universe and before and after
- */
-*, 
-*:before, 
-*:after {
+
+/* inherit border-box on all elements in the universe and before and after */
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
+/* ---------- Base page styles ---------- */
+
 body {
-	font-family: Arial, Geneva, sans-serif;
-}
-a {
-	color: #2772B0;
-}
-.wrapper {
-	width: 97%;
-	max-width: 1200px;
-	margin: 0 auto;
-	float: none;
-	background-color: #fff;
+  font-family: Arial, Geneva, sans-serif;
+  margin: 0;
+  padding: 0 0 2rem 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-div img {
-	width: 100%;
-	max-width: 225px; 
+h1, h2 {
+  text-align: center;
 }
 
-/* grid system -- mobile first! */
-/* flex contatiner */
+h1 {
+  margin: 1.5rem 0 0.5rem;
+}
+
+h2 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* ---------- Flexbox grid ---------- */
 
 .row {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
 }
 
-/* attribute selector to give some margin between columns and apply styles to flex items */
-
-[class*="col-"] {
-	margin-left: 4%;
-	flex: 0 0 92%;
+/* Base card / column styles (mobile-first) */
+[class*="col-"],
+.col-flex {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-left: 4%;
+  margin-bottom: 1rem;
+  flex: 0 0 92%; /* mobile: one item per row */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
-/* Add background colors to see how much space each column is taking */
+/* Remove left margin on first item of each row */
+.row > *:first-child {
+  margin-left: 0;
+}
+
+article h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+article p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0.25rem 0;
+}
+
+article a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ---------- Column color hints ---------- */
 
 .col-1 {
-	background-color: #A3CDD9;
+  background-color: #A3CDD9;
 }
 
 .col-2 {
-	background-color: #FFFCE6;
+  background-color: #FFFCE6;
 }
 
-/* Tablet Landscape Screen Sizes */
-@media only screen and (min-width: 480px)  {
-	
+.col-3 {
+  background-color: #D9F1A3;
+}
+
+.col-4 {
+  background-color: #F1D9A3;
+}
+
+.col-flex {
+  background-color: #E6E6FF;
+}
+
+/* ---------- Row-specific tweaks ---------- */
+
+/* Row 6 custom flex layout */
+.row-6 {
+  align-items: stretch;
+}
+
+.row-6 .col-flex {
+  flex: 1 1 92%; /* mobile: still one per row */
+}
+
+/* Row 5: change order on small screens (center card first) */
+.row-5 .main-card {
+  order: 1;
+}
+
+.row-5 .side-card:first-of-type {
+  order: 2;
+}
+
+.row-5 .side-card:last-of-type {
+  order: 3;
+}
+
+/* ---------- Tablet screen sizes ---------- */
+@media only screen and (min-width: 480px) {
+
+  /* Two-up layout for 1- and 2-column cards */
   .col-1,
   .col-2 {
-		flex: 0 0 44%;
-	}
-  
-  
+    flex: 0 0 44%;
+  }
 
+  /* Keep 3- and 4-column items full width on tablet */
+  .col-3,
+  .col-4 {
+    flex: 0 0 92%;
+  }
 
-
+  /* Row 6: three-ish per row on tablet */
+  .row-6 .col-flex {
+    flex: 1 1 28%;
+  }
 }
-/* Desktop screen Sizes */
-@media only screen and (min-width: 768px) {
-  
-  
- 	.col-1 {
-		flex: 0 0 20%;
-	}
-  
-  
-  
-	.col-2 {
-		flex: 0 0 44%;
-	}
 
+/* ---------- Desktop screen sizes ---------- */
+@media only screen and (min-width: 768px) {
+
+  /* These flex-basis values are chosen so the required layouts fit nicely:
+     - Row 1: four .col-1 items (4×20% + gaps)
+     - Row 2: two .col-2 items
+     - Row 3: .col-1 + .col-3
+     - Row 4: single .col-4
+     - Row 5: .col-1 + .col-2 + .col-1
+  */
+
+  .col-1 {
+    flex: 0 0 20%;
+  }
+
+  .col-2 {
+    flex: 0 0 44%;
+  }
+
+  .col-3 {
+    flex: 0 0 68%;
+  }
+
+  .col-4 {
+    flex: 0 0 92%;
+  }
+
+  /* Row 6: three flexible boxes that share space */
+  .row-6 .col-flex {
+    flex: 1 1 20%;
+  }
+
+  /* On desktop, revert row 5 to natural 1-2-1 order */
+  .row-5 .main-card,
+  .row-5 .side-card {
+    order: 0;
+  }
 }

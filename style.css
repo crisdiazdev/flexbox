@@ -3,7 +3,7 @@ html {
   box-sizing: border-box;
 }
 
-/* Make all elements inherit the box-sizing rule */
+/* Make all elements inherit the box sizing rule */
 *,
 *::before,
 *::after {
@@ -45,7 +45,7 @@ h2 {
   margin: 0 auto 1.5rem;
 }
 
-/* Base card/column styling (mobile-first approach) */
+/* Base card/column styling (mobile first approach) */
 [class*="col-"],
 .col-flex {
   background: #ffffff;
@@ -115,7 +115,7 @@ article a {
 
 /* ---------- Row specific customization ---------- */
 
-/* Row 6 layout: spec cards use flex-grow and wrap cleanly */
+/* Row 6 layout: spec cards use flex grow and wrap cleanly */
 .row-6 {
   align-items: stretch;
   gap: 1rem;                                  /* Space between spec cards */
@@ -160,7 +160,7 @@ article a {
   line-height: 1.4;
 }
 
-/* Row 5: re-order items on mobile so the main card shows first */
+/* Row 5: reorder items on mobile so the main card shows first */
 .row-5 .main-card {
   order: 2;
 }
@@ -197,7 +197,7 @@ article a {
 /* ---------- Desktop styles (768px and up) ---------- */
 @media only screen and (min-width: 768px) {
 
-  /* Flex-basis values chosen to match assignment layout requirements */
+  /* Flex basis values chosen to match assignment layout requirements */
   .col-1 {
     flex: 0 0 20%;
   }

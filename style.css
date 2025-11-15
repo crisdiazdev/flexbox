@@ -1,9 +1,9 @@
-
+/* Use border box so padding/borders don't mess up element sizing */
 html {
   box-sizing: border-box;
 }
 
-/* inherit border-box on all elements in the universe and before and after */
+/* Make all elements inherit the box-sizing rule */
 *,
 *::before,
 *::after {
@@ -13,15 +13,15 @@ html {
 /* ---------- Base page styles ---------- */
 
 body {
-  font-family: Arial, Geneva, sans-serif;
+  font-family: Arial, Geneva, sans-serif;   /* Simple font */
   margin: 0;
-  padding: 0 0 2rem 0;
-  background-color: #f4f4f4;
-  color: #333;
+  padding: 0 0 2rem 0;                      /* Extra space at bottom */
+  background-color: #f4f4f4;                /* Light gray background */
+  color: #333;                              /* Dark gray text */
 }
 
 h1, h2 {
-  text-align: center;
+  text-align: center;                       /* Center all section titles */
 }
 
 h1 {
@@ -35,56 +35,63 @@ h2 {
 
 /* ---------- Flexbox grid ---------- */
 
+/* Main flex row container for each row of cards */
 .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;                          /* Allows items to wrap when needed */
   justify-content: flex-start;
   width: 90%;
-  max-width: 1100px;
+  max-width: 1100px;                        /* Keep layout centered and clean */
   margin: 0 auto 1.5rem;
 }
 
-/* Base card / column styles (mobile-first) */
+/* Base card/column styling (mobile-first approach) */
 [class*="col-"],
 .col-flex {
   background: #ffffff;
   border-radius: 4px;
   padding: 0.75rem;
-  margin-left: 4%;
+  margin-left: 4%;                          /* Space between columns */
   margin-bottom: 1rem;
-  flex: 0 0 92%; /* mobile: one item per row */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  flex: 0 0 92%;                             /* Mobile: one card per row */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);    /* Little bit of shadow */
 }
 
-/* Remove left margin on first item of each row */
+/* Make the first card in each row align flush left */
 .row > *:first-child {
   margin-left: 0;
 }
 
+/* Titles inside cards */
 article h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
 }
 
+/* All images inside cards */
 article img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;                              /* Always fill the width of the card */
+  height: 170px;                            /* Force even height for consistency */
+  object-fit: cover;                        /* Crop slightly but still keeps the layout clean */
   display: block;
   margin: 0.5rem 0;
+  border-radius: 6px;
 }
 
+/* Paragraph styling inside cards */
 article p {
   font-size: 0.9rem;
   line-height: 1.4;
   margin: 0.25rem 0;
 }
 
+/* "Read more" link styling */
 article a {
   text-decoration: none;
   font-weight: bold;
 }
 
-/* ---------- Column color hints ---------- */
+/* ---------- Column background colors, helps visualize the layout ---------- */
 
 .col-1 {
   background-color: #A3CDD9;
@@ -106,30 +113,32 @@ article a {
   background-color: #E6E6FF;
 }
 
-/* ---------- Row-specific tweaks ---------- */
+/* ---------- Row specific customization ---------- */
 
-/* Row 6 custom flex layout (base) */
+/* Row 6 layout: spec cards use flex-grow and wrap cleanly */
 .row-6 {
   align-items: stretch;
-  gap: 1rem;         /* space between spec cards */
+  gap: 1rem;                                  /* Space between spec cards */
 }
 
+/* Row 6: mobile behavior (each spec card full width) */
 .row-6 .col-flex {
-  flex: 1 1 92%;     /* mobile: still one per row */
+  flex: 1 1 92%;
 }
 
-/* Row 6 spec cards */
+/* Styling for individual spec cards in Row 6 */
 .spec-card {
   background-color: #eef0ff;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  flex: 1 1 220px;          /* lets them wrap nicely */
+  flex: 1 1 220px;                            /* Allows flexible resizing */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Spec card image size */
 .spec-image {
   width: 100%;
   max-width: 180px;
@@ -138,18 +147,20 @@ article a {
   display: block;
 }
 
+/* Large number for spec value (0-60, HP, etc.) */
 .spec-value {
   font-size: 1.4rem;
   font-weight: 700;
   margin: 4px 0 8px;
 }
 
+/* Extra description text for specs */
 .spec-note {
   font-size: 0.95rem;
   line-height: 1.4;
 }
 
-/* Row 5: change order on small screens (center card first) */
+/* Row 5: re-order items on mobile so the main card shows first */
 .row-5 .main-card {
   order: 2;
 }
@@ -162,38 +173,31 @@ article a {
   order: 3;
 }
 
-/* ---------- Tablet screen sizes ---------- */
+/* ---------- Tablet styles (480px and up) ---------- */
 @media only screen and (min-width: 480px) {
 
-  /* Two-up layout for 1- and 2-column cards */
+  /* 1-column and 2-column items get two per row on tablet */
   .col-1,
   .col-2 {
     flex: 0 0 44%;
   }
 
-  /* Keep 3- and 4-column items full width on tablet */
+  /* Keep wider items full width on tablet */
   .col-3,
   .col-4 {
     flex: 0 0 92%;
   }
 
-  /* Row 6: multiple spec cards per row on tablet */
+  /* Row 6: show more spec cards per row */
   .row-6 .col-flex {
     flex: 1 1 28%;
   }
 }
 
-/* ---------- Desktop screen sizes ---------- */
+/* ---------- Desktop styles (768px and up) ---------- */
 @media only screen and (min-width: 768px) {
 
-  /* These flex-basis values are chosen so the required layouts fit nicely:
-     - Row 1: four .col-1 items (4×20% + gaps)
-     - Row 2: two .col-2 items
-     - Row 3: .col-1 + .col-3
-     - Row 4: single .col-4
-     - Row 5: .col-1 + .col-2 + .col-1
-  */
-
+  /* Flex-basis values chosen to match assignment layout requirements */
   .col-1 {
     flex: 0 0 20%;
   }
@@ -210,9 +214,8 @@ article a {
     flex: 0 0 92%;
   }
 
-  /* Row 6: three flexible spec cards that share space */
+  /* Row 6: three spec cards displayed evenly across the row */
   .row-6 .col-flex {
     flex: 1 1 20%;
   }
-
 }

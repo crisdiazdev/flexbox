@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+<!-- HTML5 document setup -->
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <!-- Makes layout responsive on phones/tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COMP 584 Project 2 – Flexbox Grid</title>
+    <!-- External stylesheet -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <!-- Main project title -->
     <h1>COMP 584 Project 2 – Flexbox Grid</h1>
 
+    <!-- ========== ROW 1 (4 small cards) ========== -->
+    <!-- Row 1 uses four 1-column items on desktop -->
     <h2>Row 1: Four 1-column wide items</h2>
     <div class="row row-1">
+
+        <!-- Each card below is a single-column flex item -->
         <article class="col-1">
             <h3>Ford Mustang GT</h3>
             <img src="assets/car13.jpg" alt="Red Ford Mustang GT parked on a city street.">
@@ -41,8 +49,11 @@
         </article>
     </div>
 
+    <!-- ========== ROW 2 (two wide cards) ========== -->
+    <!-- Row 2 uses two 2-column items on desktop -->
     <h2>Row 2: Two 2-column wide items</h2>
     <div class="row row-2">
+
         <article class="col-2">
             <h3>Porsche 911 Carrera</h3>
             <img src="assets/car1.jpg" alt="Porsche 911 Carrera driving on a winding road.">
@@ -58,8 +69,12 @@
         </article>
     </div>
 
+    <!-- ========== ROW 3 (1 + 3 layout) ========== -->
+    <!-- Row 3 uses a small sidebar card and a larger feature card -->
     <h2>Row 3: 1-column + 3-column layout</h2>
     <div class="row row-3">
+
+        <!-- Sidebar card (1-column on desktop) -->
         <article class="col-1 sidebar">
             <h3>Nissan GT-R</h3>
             <img src="assets/car16.jpg" alt="Blue Nissan GT-R parked in a garage.">
@@ -67,15 +82,18 @@
             <p><a href="#">Read more &gt;&gt;</a></p>
         </article>
 
+        <!-- Main feature card spanning 3 columns -->
         <article class="col-3 feature">
             <h3>Pagani Huayra Feature</h3>
             <img src="assets/car11.jpg" alt="Pagani Huayra hypercar on display.">
-            <p>The Pagani Huayra is a hand-built hypercar known for its exquisite craftsmanship, active aerodynamics, 
-            and AMG-built twin-turbo V12. A masterpiece of engineering and Italian design.</p>
+            <p>The Pagani Huayra is a hand-built hypercar known for its craftsmanship, active aero,
+               and AMG-built twin-turbo V12.</p>
             <p><a href="#">Read more &gt;&gt;</a></p>
         </article>
+    </div>
 
-
+    <!-- ========== ROW 4 (full width) ========== -->
+    <!-- Row 4 is a single 4-column item that spans entire grid -->
     <h2>Row 4: One 4-column wide item</h2>
     <div class="row row-4">
         <article class="col-4">
@@ -86,20 +104,26 @@
         </article>
     </div>
 
-   <h2>Row 5: 1-2-1 layout</h2>
+    <!-- ========== ROW 5 (1-2-1 layout) ========== -->
+    <!-- Row 5 uses the 1-2-1 column pattern -->
+    <h2>Row 5: 1-2-1 layout</h2>
     <div class="row row-5">
+
+        <!-- Left small card -->
         <article class="col-1 side-card">
             <h3>Classic Muscle</h3>
             <img src="assets/car1.jpg" alt="Classic muscle car profile view.">
             <p>Old-school power and style from the golden era of muscle cars.</p>
         </article>
 
+        <!-- Center wide card -->
         <article class="col-2 main-card">
             <h3>Modern Supercar</h3>
             <img src="assets/car4.jpg" alt="Modern supercar driving along a mountain road.">
             <p>The center card focuses on a modern supercar that blends performance, tech, and refinement.</p>
         </article>
 
+        <!-- Right small card -->
         <article class="col-1 side-card">
             <h3>JDM Icon</h3>
             <img src="assets/car16.jpg" alt="JDM performance car parked at night.">
@@ -107,32 +131,35 @@
         </article>
     </div>
 
-
-   <h2>Row 6: Three Flex Grow Spec Cards </h2>
+    <!-- ========== ROW 6 (custom flex-grow row) ========== -->
+    <!-- Row 6 uses flex-grow items to create a custom layout -->
+    <h2>Row 6: Three Flex Grow Spec Cards</h2>
     <div class="row row-6">
+
+        <!-- Spec card 1 -->
         <article class="col-flex spec-card">
             <img src="assets/car3.jpg" alt="Yellow Lamborghini on a race track." class="spec-image">
             <h3>0–60 mph</h3>
             <p class="spec-value">3.0 seconds</p>
-            <p class="spec-note">Launch control, sticky tires, and aggressive gearing make this build brutally quick off the line.</p>
+            <p class="spec-note">Launch control and strong grip give this build extremely quick acceleration.</p>
         </article>
 
+        <!-- Spec card 2 -->
         <article class="col-flex spec-card">
             <img src="assets/car10.jpg" alt="Porsche 911 driving on a mountain road." class="spec-image">
             <h3>Horsepower</h3>
             <p class="spec-value">710 HP</p>
-            <p class="spec-note">Turbocharged power with a track-ready tune and upgraded cooling for consistent performance.</p>
+            <p class="spec-note">High output tuning with upgraded cooling for consistent performance.</p>
         </article>
 
+        <!-- Spec card 3 -->
         <article class="col-flex spec-card">
             <img src="assets/car7.jpeg" alt="Blue Nissan GT-R parked in a garage." class="spec-image">
             <h3>Top Speed</h3>
             <p class="spec-value">211 mph</p>
-            <p class="spec-note">Aerodynamic upgrades and long gearing help this build stay stable at serious speeds.</p>
+            <p class="spec-note">Optimized aerodynamics and long gearing help this build reach high top speeds.</p>
         </article>
     </div>
-
-
 
 </body>
 </html>

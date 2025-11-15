@@ -1,5 +1,4 @@
-/* Border box declaration 
-https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
 html {
   box-sizing: border-box;
 }
@@ -109,22 +108,54 @@ article a {
 
 /* ---------- Row-specific tweaks ---------- */
 
-/* Row 6 custom flex layout */
+/* Row 6 custom flex layout (base) */
 .row-6 {
   align-items: stretch;
+  gap: 1rem;         /* space between spec cards */
 }
 
 .row-6 .col-flex {
-  flex: 1 1 92%; /* mobile: still one per row */
+  flex: 1 1 92%;     /* mobile: still one per row */
+}
+
+/* Row 6 spec cards */
+.spec-card {
+  background-color: #eef0ff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  flex: 1 1 220px;          /* lets them wrap nicely */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spec-image {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.spec-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+
+.spec-note {
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 /* Row 5: change order on small screens (center card first) */
 .row-5 .main-card {
-  order: 1;
+  order: 2;
 }
 
 .row-5 .side-card:first-of-type {
-  order: 2;
+  order: 1;
 }
 
 .row-5 .side-card:last-of-type {
@@ -146,7 +177,7 @@ article a {
     flex: 0 0 92%;
   }
 
-  /* Row 6: three-ish per row on tablet */
+  /* Row 6: multiple spec cards per row on tablet */
   .row-6 .col-flex {
     flex: 1 1 28%;
   }
@@ -179,14 +210,9 @@ article a {
     flex: 0 0 92%;
   }
 
-  /* Row 6: three flexible boxes that share space */
+  /* Row 6: three flexible spec cards that share space */
   .row-6 .col-flex {
     flex: 1 1 20%;
   }
 
-  /* On desktop, revert row 5 to natural 1-2-1 order */
-  .row-5 .main-card,
-  .row-5 .side-card {
-    order: 0;
-  }
 }
